@@ -5,10 +5,12 @@ from parsl.executors import HighThroughputExecutor
 from parsl.addresses import address_by_hostname
 
 proxy = '/tmp/x509up_u{}'.format(os.getuid())
+if not os.path.isfile(proxy):
+    raise RuntimeError('No valid proxy found-- please run `voms-proxy-init -voms cms`')
 
 worker_init = '''
-
 source /cvmfs/sft.cern.ch/lcg/views/LCG_95apython3/x86_64-centos7-gcc7-opt/setup.sh
+
 export PATH=~/.local/bin:$PATH
 export PYTHONPATH=~/.local/lib/python3.6/site-packages:$PYTHONPATH
 
