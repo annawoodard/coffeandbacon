@@ -25,8 +25,8 @@ config = Config(
             worker_debug=True,
             provider=CondorProvider(
                 cores_per_slot=8,
-                init_blocks=80,
-                max_blocks=80,
+                init_blocks=90,
+                max_blocks=90,
                 worker_init=worker_init,
                 transfer_input_files=[proxy],
             ),
